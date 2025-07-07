@@ -22,8 +22,8 @@ export default function Home() {
             Are You UCEK Enough?
           </CardTitle>
           <CardDescription className="text-lg pt-2">
-            Take this highly scientific quiz to determine your compatibility
-            with the UCEK spirit.
+            Take this not-so-scientific quiz to determine your compatibility
+            with UCEK.
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col items-center">
