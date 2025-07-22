@@ -5,6 +5,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import Footer from '@/components/Footer';
 import Script from 'next/script';
+import { Suspense } from 'react';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -37,7 +38,9 @@ export default function RootLayout({
     >
       <head />
       <body className="font-body antialiased flex flex-col min-h-screen">
-        <GoogleAnalytics />
+        <Suspense>
+          <GoogleAnalytics />
+        </Suspense>
         <div className='flex-1 flex flex-col'>
           {children}
         </div>
