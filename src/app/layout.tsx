@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import type { Metadata } from 'next';
 import { Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css';
@@ -36,6 +37,7 @@ export default function RootLayout({
     >
       <head />
       <body className="font-body antialiased flex flex-col min-h-screen">
+        <GoogleAnalytics />
         <div className='flex-1 flex flex-col'>
           {children}
         </div>
@@ -53,6 +55,22 @@ export default function RootLayout({
             data-x_margin="18"
             data-y_margin="18"
             strategy="lazyOnload"
+        />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+        />
+        <Script
+          id="gtag-init"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
         />
       </body>
     </html>
