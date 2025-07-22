@@ -57,7 +57,7 @@ export default function RootLayout({
             strategy="lazyOnload"
         />
         <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+          src={`https://www.googletagmanager.com/gtag/js?id=G-Q4G5RPT8P4`}
         />
         <Script
           id="gtag-init"
@@ -66,7 +66,7 @@ export default function RootLayout({
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
+              gtag('config', 'G-Q4G5RPT8P4', {
                 page_path: window.location.pathname,
               });
             `,
