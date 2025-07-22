@@ -1,9 +1,11 @@
+import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import type { Metadata } from 'next';
 import { Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import Footer from '@/components/Footer';
 import Script from 'next/script';
+import { Suspense } from 'react';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -36,6 +38,9 @@ export default function RootLayout({
     >
       <head />
       <body className="font-body antialiased flex flex-col min-h-screen">
+        <Suspense>
+          <GoogleAnalytics />
+        </Suspense>
         <div className='flex-1 flex flex-col'>
           {children}
         </div>
@@ -53,6 +58,22 @@ export default function RootLayout({
             data-x_margin="18"
             data-y_margin="18"
             strategy="lazyOnload"
+        />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=G-Q4G5RPT8P4`}
+        />
+        <Script
+          id="gtag-init"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-Q4G5RPT8P4', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
         />
       </body>
     </html>
